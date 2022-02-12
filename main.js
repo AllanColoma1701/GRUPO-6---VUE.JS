@@ -3,7 +3,6 @@ const app = Vue.createApp({
         return{
             producto: 'Medias', 
             marca: 'Vue Mastery',
-            imagen: './images/medias_verdes.jpg',
             detalles:['50% Algodón', '30% Lana', '20% Poliéster'], 
             variantes: [
                 {id: 2234, color: 'green', imagen: './images/medias_verdes.jpg', cantidad: 50}, 
