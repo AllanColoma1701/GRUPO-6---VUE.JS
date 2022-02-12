@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE 3 - CDN</title>
+    <!--Importar CSS-->
+    <link rel="stylesheet" href="./styles.css">
+    <!--Importar Vue3-->
+   <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="barra-navegacion"></div>
+        <div class="pantalla-producto">
+            <div class="contenedor-producto">
+                <div class="imagen-producto">
+                    <img v-bind:src="imagen" alt="">
+                </div>
+                <div class="informacion-producto">
+                    <div class="carrito">Carrito({{ carrito }})</div>
+                    <h1>{{ titulo }}</h1>
+                    <p v-if="enStock">En Stock</p>
+                    <p v-else>Agotado</p>
+                    <ul>
+                        <li v-for="detalle in detalles">{{ detalle }}</li>
+                    </ul>
+                    <div v-for="(variante, index) in variantes" 
+                     v-bind:key="variante.id"
+                     v-on:mouseover="actualizarVariante(index)"
+                     class="color-circulo"
+                     v-bind:style="{ backgroundColor: variante.color }">
+
+                   </div>
+                   <button class="boton"
+                   v-on:click="añadirCarrito"
+                   v-bind:disabled="!enStock"
+                   v-bind:class="{ botonDesactivado: !enStock }">
+                   Añadir al Carrito</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!--Importar App-->
+    <script src="./main.js"></script>
+    <!--Montar App-->
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+</body>
+</html>
